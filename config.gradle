@@ -1,0 +1,104 @@
+// 设置gradle中的全局变量
+ext {
+    android = [
+            compileSdkVersion: 27,
+            applicationId    : "com.hysea.baselibrary",
+            minSdkVersion    : 19,
+            targetSdkVersion : 27,
+            versionCode      : 1,
+            versionName      : "1.0.0",
+    ]
+
+    dependVersion = [
+            support: "27.1.0"
+    ]
+
+    dependencies = [
+            // android-support
+            "appcompat-v7"          : "com.android.support:appcompat-v7:${dependVersion.support}",
+            "appcompat-v4"          : "com.android.support:appcompat-v4:${dependVersion.support}",
+            "design"                : "com.android.support:design:${dependVersion.support}",
+            "recyclerview"          : "com.android.support:recyclerview-v7:${dependVersion.support}",
+            "cardview"              : "com.android.support:cardview-v7:${dependVersion.support}",
+
+            //http
+            "okhttp"                : "com.squareup.okhttp3:okhttp:3.8.1",
+            "okhttp-logger"         : "com.squareup.okhttp3:logging-interceptor:3.8.1",
+            "retrofit2"             : "com.squareup.retrofit2:retrofit:2.3.0",
+            "converter-gson"        : "com.squareup.retrofit2:converter-gson:2.3.0",
+            "adapter-rxjava2"       : "com.squareup.retrofit2:adapter-rxjava2:2.3.0",
+
+            //rx
+            "rxjava"                : "io.reactivex.rxjava2:rxjava:2.0.6",
+            "rxandroid"             : "io.reactivex.rxjava2:rxandroid:2.0.1",
+            "rxbinding"             : "com.jakewharton.rxbinding2:rxbinding:2.1.1",
+            "websocket"             : "com.dhh:websocket:2.1.2",
+            "rxlifecycle-components": "com.trello.rxlifecycle2:rxlifecycle-components:2.2.1",
+
+            //dagger2
+            "dagger"                : "com.google.dagger:dagger:2.7",
+            "dagger-compiler"       : "com.google.dagger:dagger-compiler:2.7",
+
+            // 高德地图
+            "amap_location"         : "com.amap.api:location:latest.integration",   //定位功能
+            "amap_3dmap"            : "com.amap.api:3dmap:latest.integration", //3D地图so及jar
+
+            // umeng
+            "umeng-common"          : "com.umeng.umsdk:common:1.5.4",
+            "umeng-analytics"       : "com.umeng.sdk:analytics:7.5.3",
+            "umeng-utdid"           : "com.umeng.umsdk:utdid:1.1.5.3",
+            "umeng-push"            : "com.umeng.umsdk:push:5.0.2",
+
+            //ui
+            "switchbutton"          : "ch.ielse:switchbutton:1.0.1",
+
+            "bottomdialog"          : "me.shaohui:bottomdialog:1.1.9",
+            "butterknife"           : "com.jakewharton:butterknife:8.8.1",
+            "butterknife-compiler"  : "com.jakewharton:butterknife-compiler:8.8.1",
+            "BaseAdapterHelper"     : "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.44",
+            "SmartRefreshLayout"    : "com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-7",
+            "glide"                 : "com.github.bumptech.glide:glide:4.5.0",
+            "statusbarutil"         : "com.jaeger.statusbarutil:library:1.4.0",
+            "popwindow"             : "com.github.pinguo-zhouwei:CustomPopwindow:2.1.1",
+            "dialog"                : "com.lai.weavey:dialog:2.0.1",
+            "circleimageview"       : "de.hdodenhof:circleimageview:2.1.0",
+            "multidex"              : "com.android.support:multidex:1.0.1",
+            "ImageFrame"            : "com.github.Mr-wangyong:ImageFrame:v1.3.0",
+            "glide-transformations" : "jp.wasabeef:glide-transformations:3.3.0",
+            "expandableTextView"    : "com.jaydenxiao:ExpandableTextView:1.0.0",
+            "convenientbanner"      : "com.bigkoo:convenientbanner:2.0.5",
+            "customPopwindow"       : "com.github.pinguo-zhouwei:CustomPopwindow:2.1.1",
+            "rxpermission"          : "com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar",
+            "PickerView"            : "com.contrarywind:Android-PickerView:4.1.4",
+            "EasySwipeMenuLayout"   : "com.github.anzaizai:EasySwipeMenuLayout:1.1.2",
+            "magic-indicator"       : "com.github.hackware1993:MagicIndicator:1.5.0",
+            "picture-selector"      : "com.github.LuckSiege.PictureSelector:picture_library:v2.2.3",
+
+            "gsyVideoPlayer-java"   : "com.shuyu:gsyVideoPlayer-java:6.0.3",
+            "GSYVideoPlayer-exo2"   : "com.shuyu:GSYVideoPlayer-exo2:6.0.3",
+            "gsyVideoPlayer-ex_so"  : "com.shuyu:gsyVideoPlayer-ex_so:6.0.3",
+
+            // eventbus
+            "eventbus"              : "org.greenrobot:eventbus:3.1.1",
+
+            // leakcanary
+            "debug_leakcanary"      : "com.squareup.leakcanary:leakcanary-android:1.5.4",
+            "release_leakcanary"    : "com.squareup.leakcanary:leakcanary-android-no-op:1.5.4",
+
+            // bugly
+            "crashreport_upgrade"   : "com.tencent.bugly:crashreport_upgrade:latest.release",
+            "nativecrashreport"     : "com.tencent.bugly:nativecrashreport:latest.release",
+
+            //database
+            "litepal"               : "org.litepal.android:java:3.0.0",
+
+            "AndroidTagView"        : 'co.lujun:androidtagview:1.1.4',
+            "lottie"                : 'com.airbnb.android:lottie:2.3.0',
+            "autosize"              : 'me.jessyan:autosize:1.0.5',
+            "bga-swipebacklayout"   : 'cn.bingoogolapple:bga-swipebacklayout:1.2.0',
+            "mmkv"                  : "com.tencent:mmkv-static:1.0.18",
+
+            "calendarview"          : 'com.haibin:calendarview:3.5.5',
+            "filedownloader"        : "com.liulishuo.filedownloader:library:1.7.6"
+    ]
+}

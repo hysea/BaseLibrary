@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">BaseLibrary</string>
+
+    <string name="font_arialmt">"font/ArialMT.ttf"</string>
+
+    <string name="expand_string">more</string>
+    <string name="collapsed_string">less</string>
+
+    <string name="empty_base_url">请设置网络请求的BaseUrl</string>
+
+    <string name="not_network">当前网络不可用，请检查网络情况</string>
+    <string name="http_error">网络请求失败，请稍后重试…</string>
+    <string name="parse_error">解析数据失败，请稍后再试…</string>
+    <string name="connect_error">网络连接失败，请稍后再试…</string>
+    <string name="connect_timeout">网络连接超时，请稍后再试…</string>
+    <string name="server_error">服务器异常，请稍后重试…</string>
+
+    <string name="success">SUCCESS</string>
+
+    <!-- 异常 -->
+    <string name="no_data">No data</string>
+    <string name="no_network">No network\nTry again later</string>
+    <string name="data_loading_failed">Data loading failed\nClick to refresh</string>
+    <string name="no_page_content">No page content</string>
+    <string name="no_favorite">No favorite</string>
+
+</resources>

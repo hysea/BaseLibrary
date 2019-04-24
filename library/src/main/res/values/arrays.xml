@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="loading_view_xinhua">
+        <item>@drawable/jz_00000</item>
+        <!--<item>@drawable/jz_00001</item>-->
+        <item>@drawable/jz_00002</item>
+        <!--<item>@drawable/jz_00003</item>-->
+        <!--<item>@drawable/jz_00004</item>-->
+        <item>@drawable/jz_00005</item>
+        <!--<item>@drawable/jz_00006</item>-->
+        <!--<item>@drawable/jz_00007</item>-->
+        <item>@drawable/jz_00008</item>
+        <!--<item>@drawable/jz_00009</item>-->
+        <!--<item>@drawable/jz_00011</item>-->
+        <item>@drawable/jz_00012</item>
+        <!--<item>@drawable/jz_00013</item>-->
+        <!--<item>@drawable/jz_00014</item>-->
+        <item>@drawable/jz_00015</item>
+        <!--<item>@drawable/jz_00016</item>-->
+        <!--<item>@drawable/jz_00017</item>-->
+        <item>@drawable/jz_00018</item>
+        <!--<item>@drawable/jz_00019</item>-->
+        <!--<item>@drawable/jz_00020</item>-->
+        <item>@drawable/jz_00021</item>
+        <!--<item>@drawable/jz_00022</item>-->
+        <!--<item>@drawable/jz_00023</item>-->
+        <item>@drawable/jz_00024</item>
+        <!--<item>@drawable/jz_00025</item>-->
+        <!--<item>@drawable/jz_00026</item>-->
+        <item>@drawable/jz_00027</item>
+        <!--<item>@drawable/jz_00028</item>-->
+        <item>@drawable/jz_00029</item>
+    </array>
+</resources>

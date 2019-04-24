@@ -1,0 +1,65 @@
+apply plugin: 'com.android.library'
+
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            //设置支持的SO库架构
+            abiFilters 'armeabi', 'armeabi-v7a', 'x86'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // 支持lambda表达式
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2')
+    testImplementation 'junit:junit:4.12'
+    api rootProject.ext.dependencies["appcompat-v7"]
+    api rootProject.ext.dependencies["cardview"]
+    api rootProject.ext.dependencies["design"]
+    api rootProject.ext.dependencies["retrofit2"]
+    api rootProject.ext.dependencies["converter-gson"]
+    api rootProject.ext.dependencies["adapter-rxjava2"]
+    api rootProject.ext.dependencies["okhttp"]
+    api rootProject.ext.dependencies["okhttp-logger"]
+    api rootProject.ext.dependencies["rxandroid"]
+    api rootProject.ext.dependencies["rxlifecycle-components"]
+    api rootProject.ext.dependencies["glide"]
+    api rootProject.ext.dependencies["rxbinding"]
+    api rootProject.ext.dependencies["butterknife"]
+    api rootProject.ext.dependencies["ImageFrame"]
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+    api rootProject.ext.dependencies["eventbus"]
+    api rootProject.ext.dependencies["statusbarutil"]
+    api rootProject.ext.dependencies["mmkv"]
+    api rootProject.ext.dependencies["filedownloader"]
+    api rootProject.ext.dependencies["BaseAdapterHelper"]
+    api rootProject.ext.dependencies["SmartRefreshLayout"]
+    api rootProject.ext.dependencies["crashreport_upgrade"]
+    api rootProject.ext.dependencies["nativecrashreport"]
+    api rootProject.ext.dependencies["lottie"]
+    api rootProject.ext.dependencies["bga-swipebacklayout"]
+    api rootProject.ext.dependencies["gsyVideoPlayer-java"]
+    api rootProject.ext.dependencies["GSYVideoPlayer-exo2"]
+    api rootProject.ext.dependencies["gsyVideoPlayer-ex_so"]
+}

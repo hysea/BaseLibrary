@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--刷新头部-->
+    <declare-styleable name="MaterialHeader">
+        <attr name="mhPrimaryColor" format="color"/>
+        <attr name="mhShadowColor" format="color"/>
+        <attr name="mhShadowRadius" format="dimension"/>
+        <attr name="mhShowBezierWave" format="boolean"/>
+    </declare-styleable>
+
+    <!--通用标题栏-->
+    <declare-styleable name="CustomTitleBar">
+        <attr name="title_background_color" format="color"/>
+        <attr name="left_button_image" format="reference"/>
+        <attr name="left_button_text" format="string"/>
+        <attr name="left_button_textColor" format="color"/>
+        <attr name="left_button_textSize" format="dimension"/>
+        <attr name="title_text" format="string"/>
+        <attr name="title_textColor" format="color"/>
+        <attr name="title_textSize" format="dimension"/>
+        <attr name="right_button_image" format="reference"/>
+        <attr name="right_button_text" format="string"/>
+        <attr name="right_button_textColor" format="color"/>
+        <attr name="right_button_textSize" format="dimension"/>
+        <attr name="show_line" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="ScaleLayout">
+        <!--宽高比例-->
+        <attr name="scale" format="float" />
+    </declare-styleable>
+
+</resources>
