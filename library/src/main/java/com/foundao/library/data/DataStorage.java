@@ -11,8 +11,16 @@ import java.util.Set;
  * create by hysea on 2019/4/12
  */
 public class DataStorage implements IDataStorage {
+    private MMKV mmkv;
 
-    private final MMKV mmkv = MMKV.defaultMMKV();
+    public static DataStorage defaultDataStorage() {
+        return new DataStorage();
+    }
+
+    private DataStorage() {
+        mmkv = MMKV.defaultMMKV();
+    }
+
 
     @Override
     public void putInt(String key, int value) {

@@ -62,4 +62,7 @@ dependencies {
     api rootProject.ext.dependencies["gsyVideoPlayer-java"]
     api rootProject.ext.dependencies["GSYVideoPlayer-exo2"]
     api rootProject.ext.dependencies["gsyVideoPlayer-ex_so"]
+    api rootProject.ext.dependencies["autosize"]
+    debugImplementation rootProject.ext.dependencies["debug_leakcanary"]
+    releaseImplementation rootProject.ext.dependencies["release_leakcanary"]
 }
