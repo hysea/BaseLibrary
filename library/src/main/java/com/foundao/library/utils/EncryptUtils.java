@@ -1,107 +1,96 @@
 package com.foundao.library.utils;
+
+import android.support.annotation.NonNull;
+
+import com.foundao.library.constant.EncryptType;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
 /**
- * @name create by wukaihong ON 2018/9/18 18:14
- * @desc
+ * 加密工具类
+ *
+ * @create @author hysea on 2019/5/13
  */
 public class EncryptUtils {
-    /**
-     * 传入文本内容，返回 SHA-256 串
-     *
-     * @param strText
-     * @return
-     */
 
-    public static String SHA256(final String strText) {
-        return SHA(strText, "SHA-256");
+    private EncryptUtils() {
+        throw new IllegalArgumentException("EncryptUtils cannot be instantiated");
     }
 
     /**
-     * 传入文本内容，返回 SHA-512 串
+     * MD5加密字符串
      *
-     * @param strText
-     * @return
+     * @return 返回32位的小写加密串
      */
-    public static String SHA512(final String strText) {
-        return SHA(strText, "SHA-512");
+    public static String md5Encrypt(String text) {
+        return encrypt(text, EncryptType.MD5);
     }
 
     /**
-     * 字符串 SHA 加密
-     *
-     * @param strText
-     * @return
+     * MD5文件加密
      */
-    private static String SHA(final String strText, final String strType) {
-        // 返回值
-        String strResult = null;
-
-        // 是否是有效字符串
-        if (strText != null && strText.length() > 0) {
-            try {
-                // SHA 加密开始
-                // 创建加密对象 并傳入加密類型
-                MessageDigest messageDigest = MessageDigest
-                        .getInstance(strType);
-                // 传入要加密的字符串
-                messageDigest.update(strText.getBytes());
-                // 得到 byte 類型结果
-                byte byteBuffer[] = messageDigest.digest();
-
-                // 將 byte 轉換爲 string
-                StringBuffer strHexString = new StringBuffer();
-                // 遍歷 byte buffer
-                for (int i = 0; i < byteBuffer.length; i++) {
-                    String hex = Integer.toHexString(0xff & byteBuffer[i]);
-                    if (hex.length() == 1) {
-                        strHexString.append('0');
-                    }
-                    strHexString.append(hex);
-                }
-                // 得到返回結果
-                strResult = strHexString.toString();
-            } catch (NoSuchAlgorithmException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return strResult;
-    }
-    /**
-     * 生成30位md5码
-     *
-     * @param password
-     * @return
-     */
-    public static String md5Password(String password, boolean isNeedSub) {
-
+    public static byte[] md5Encrypt(File file) {
+        FileInputStream fis = null;
         try {
-            // 得到一个信息摘要器
-            MessageDigest digest = MessageDigest.getInstance("md5");
-            byte[] result = digest.digest(password.getBytes());
-            StringBuffer buffer = new StringBuffer();
-            // 把每一个byte 做一个与运算 0xff;
-            for (byte b : result) {
-                // 与运算
-                int number = b & 0xff;// 加盐
-                String str = Integer.toHexString(number);
-                if (str.length() == 1) {
-                    buffer.append("0");
-                }
-                buffer.append(str);
-            }
-            if (isNeedSub) {
-                return buffer.toString().substring(0, 30);
-            } else {
-                // 标准的md5加密后的结果
-                return buffer.toString();
-            }
+            fis = new FileInputStream(file);
+            FileChannel channel = fis.getChannel();
+            MappedByteBuffer buffer = channel.map(FileChannel.MapMode.READ_ONLY, 0, file.length());
+            MessageDigest md = MessageDigest.getInstance(EncryptType.MD5.getValue());
+            md.update(buffer);
+            return md.digest();
+        } catch (IOException | NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } finally {
+            CloseUtils.closeIO(fis);
+        }
+        return null;
+    }
 
+
+    /**
+     * SHA-256加密字符串
+     */
+    public static String sha256Encrypt(String text) {
+        return encrypt(text, EncryptType.SHA256);
+    }
+
+    /**
+     * SHA-512加密字符串
+     */
+    public static String sha512Encrypt(final String text) {
+        return encrypt(text, EncryptType.SHA512);
+    }
+
+
+    /**
+     * 加密
+     *
+     * @param text        加密字符串
+     * @param encryptType 加密类型
+     */
+    public static String encrypt(@NonNull String text, EncryptType encryptType) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance(encryptType.getValue());
+            byte[] bytes = digest.digest(text.getBytes());
+
+            StringBuilder builder = new StringBuilder(bytes.length * 2);
+            for (byte b : bytes) {
+                String hexStr = Integer.toHexString(b & 0xff);
+                if (hexStr.length() == 1) {
+                    builder.append("0");
+                }
+                builder.append(hexStr);
+            }
+            return builder.toString();
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
-            return "";
         }
-
+        return "";
     }
 }

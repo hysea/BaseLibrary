@@ -23,6 +23,7 @@ public abstract class BaseSwipeBackActivity extends BaseActivity implements BGAS
         // 在 super.onCreate(savedInstanceState) 之前调用该方法
         initSwipeBackFinish();
         super.onCreate(savedInstanceState);
+        setStatusBar();
     }
 
     /**
@@ -86,6 +87,8 @@ public abstract class BaseSwipeBackActivity extends BaseActivity implements BGAS
     @Override
     public void onSwipeBackLayoutExecuted() {
         mSwipeBackHelper.swipeBackward();
+        // 解决侧滑返回在华为mate20、P20上闪屏的问题
+        BaseSwipeBackActivity.this.overridePendingTransition(0, 0);
     }
 
     @Override

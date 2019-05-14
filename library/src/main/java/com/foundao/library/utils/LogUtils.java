@@ -6,6 +6,10 @@ import com.foundao.library.BuildConfig;
 
 public class LogUtils {
 
+    private LogUtils() {
+        throw new IllegalArgumentException("LogUtils cannot be instantiated");
+    }
+
     public static final String TAG = LogUtils.class.getSimpleName();
 
 

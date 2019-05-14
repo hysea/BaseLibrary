@@ -109,7 +109,7 @@
         android:visibility="gone" />
 
     <moe.codeest.enviews.ENDownloadView
-        android:id="@+id/loading"
+        android:id="@+id/pb_loading"
         android:layout_width="28dp"
         android:layout_height="28dp"
         android:layout_centerHorizontal="true"

@@ -5,16 +5,15 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.Target;
 import com.foundao.library.R;
 
 /**
- * Glide工具类
+ * Glide 4.0工具类
  */
 public class GlideImageLoader {
     // 默认占位图
-    private static final int PLACE_HOLDER = R.drawable.squre_weijiazai_imagei;
-    private static final int ERROR = R.drawable.squre_weijiazai_imagei;
+    private static final int PLACE_HOLDER = R.drawable.morentu_large_iamge;
+    private static final int ERROR = R.drawable.morentu_large_iamge;
 
     /**
      * 加载图片
@@ -32,11 +31,10 @@ public class GlideImageLoader {
      * @param isPlaceHolder : 是否显示占位图片
      */
     public static void loadImage(Context context, Object obj, ImageView image, boolean isPlaceHolder) {
-        image.setScaleType(ImageView.ScaleType.CENTER_CROP);
         if (isPlaceHolder) {
             Glide.with(context).load(obj).apply(requestOptions(PLACE_HOLDER, ERROR)).into(image);
         } else {
-            Glide.with(context).load(obj).apply( new RequestOptions().override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)).into(image);
+            Glide.with(context).load(obj).into(image);
         }
     }
 
@@ -46,7 +44,7 @@ public class GlideImageLoader {
      * @param obj ：图片来源，可以是url，drawable，文件路径等
      */
     public static void loadImage(Context context, Object obj, ImageView image, RequestOptions options) {
-        Glide.with(context).load(obj).apply(options.override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)).into(image);
+        Glide.with(context).load(obj).apply(options).into(image);
     }
 
     /**
@@ -61,7 +59,6 @@ public class GlideImageLoader {
      */
     public static RequestOptions requestOptions(int placeholderResId, int errorResId) {
         return new RequestOptions()
-                .override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
                 .placeholder(placeholderResId)
                 .error(errorResId);
     }

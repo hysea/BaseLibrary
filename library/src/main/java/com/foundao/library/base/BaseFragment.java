@@ -32,7 +32,7 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
      * 管理Rx的订阅事件
      */
     protected CompositeDisposable mCompositeDisposable;
-    private Unbinder mUnBinder;
+    public Unbinder mUnBinder;
     private LoadingView mLoadingView;
 
     @Override

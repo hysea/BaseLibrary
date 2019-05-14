@@ -8,8 +8,10 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 
 import java.io.File;
+import java.util.UUID;
 
 /**
  * Created by hysea on 2017/9/5.
@@ -47,6 +49,13 @@ public class AppUtils {
         return Settings.System.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 
+    public static String getDeviceToken(Context context) {
+        String token = getAndroidID(context);
+        if (TextUtils.isEmpty(token)) {
+            token = UUID.randomUUID().toString();
+        }
+        return token;
+    }
 
     /**
      * 获取当前应用版本名称
@@ -138,9 +147,8 @@ public class AppUtils {
     public static void installApk(Context context, File apkFile) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-        // TODO 待完善
-//        intent.setDataAndType(FileUtils.fromFileToUri(context, apkFile),
-//                "application/vnd.android.package-archive");
+        intent.setDataAndType(FileUtils.fromFileToUri(context, apkFile),
+                "application/vnd.android.package-archive");
         context.startActivity(intent);
     }
 }

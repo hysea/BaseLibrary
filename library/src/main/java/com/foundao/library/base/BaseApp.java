@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.foundao.library.BuildConfig;
 import com.foundao.library.utils.LogUtils;
+import com.liulishuo.filedownloader.FileDownloader;
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.bugly.Bugly;
 import com.tencent.mmkv.MMKV;
@@ -29,6 +30,7 @@ public class BaseApp extends Application {
         LogUtils.i("MMKV dir : " + dir);
         initSwipeBack();
         initLeakcanary();
+        FileDownloader.init(getApplicationContext());
     }
 
     /**

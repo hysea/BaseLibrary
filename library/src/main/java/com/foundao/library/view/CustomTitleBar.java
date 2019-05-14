@@ -128,6 +128,9 @@ public class CustomTitleBar extends RelativeLayout implements View.OnClickListen
         mTvRight = findViewById(R.id.tv_right);
         mIvRight = findViewById(R.id.iv_right);
         line = findViewById(R.id.line);
+
+        Typeface typeFace = Typeface.createFromAsset(context.getAssets(), context.getString(R.string.font_arialmt));
+        setTextTypeface(typeFace);
     }
 
 
@@ -270,7 +273,7 @@ public class CustomTitleBar extends RelativeLayout implements View.OnClickListen
     }
 
     public void setShowLeftButton(boolean showLeftButton) {
-        mIvLeft.setVisibility(showLeftButton ? VISIBLE : INVISIBLE);
+        mTvLeft.setVisibility(showLeftButton ? VISIBLE : INVISIBLE);
         mIvLeft.setVisibility(showLeftButton ? VISIBLE : INVISIBLE);
     }
 

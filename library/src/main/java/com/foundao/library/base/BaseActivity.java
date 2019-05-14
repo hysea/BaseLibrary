@@ -2,18 +2,10 @@ package com.foundao.library.base;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.foundao.library.R;
 import com.foundao.library.interfaces.IBaseView;
 import com.foundao.library.manager.AppManager;
 import com.foundao.library.view.LoadingView;
@@ -22,6 +14,8 @@ import org.greenrobot.eventbus.EventBus;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 /**
  * Activity基类
@@ -34,7 +28,10 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     private Unbinder mUnBinder;
 
     protected static String TAG;
-
+    /**
+     * 管理Rx的订阅事件
+     */
+    protected CompositeDisposable mCompositeDisposable;
     protected LoadingView mLoadingView;
 
     @Override
@@ -79,6 +76,25 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     @Override
     public void initEvent() {
+    }
+
+    /**
+     * 添加订阅
+     */
+    public void addDisposable(Disposable disposable) {
+        if (mCompositeDisposable == null) {
+            mCompositeDisposable = new CompositeDisposable();
+        }
+        mCompositeDisposable.add(disposable);
+    }
+
+    /**
+     * 取消所有订阅
+     */
+    protected void clearDisposable() {
+        if (mCompositeDisposable != null) {
+            mCompositeDisposable.clear();
+        }
     }
 
     @Override
@@ -129,6 +145,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         if (isRegisterEventBus()) {
             EventBus.getDefault().unregister(this);
         }
+        clearDisposable();
         super.onDestroy();
     }
 }

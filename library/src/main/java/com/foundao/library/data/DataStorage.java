@@ -1,9 +1,12 @@
 package com.foundao.library.data;
 
 import android.os.Parcelable;
+import android.text.TextUtils;
 
 import com.tencent.mmkv.MMKV;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -11,6 +14,16 @@ import java.util.Set;
  * create by hysea on 2019/4/12
  */
 public class DataStorage implements IDataStorage {
+    /**
+     * 分隔符
+     */
+    private static final String SEPARATOR = ";";
+
+    /**
+     * 替换符
+     */
+    private static final String REPLACEMENT = ":";
+
     private MMKV mmkv;
 
     public static DataStorage defaultDataStorage() {
@@ -63,6 +76,17 @@ public class DataStorage implements IDataStorage {
     }
 
     @Override
+    public void putStringList(String key, List<String> value) {
+        StringBuilder builder = new StringBuilder();
+        for (String str : value) {
+            // 将字符串中;替换成另外一个符号，防止分割出现问题
+            builder.append(str.replaceAll(SEPARATOR, REPLACEMENT));
+            builder.append(SEPARATOR);
+        }
+        putString(key, builder.toString());
+    }
+
+    @Override
     public int getInt(String key) {
         return mmkv.decodeInt(key);
     }
@@ -100,5 +124,21 @@ public class DataStorage implements IDataStorage {
     @Override
     public <T extends Parcelable> T getParcelable(String key, Class<T> clazz) {
         return mmkv.decodeParcelable(key, clazz);
+    }
+
+    @Override
+    public List<String> getStringList(String key) {
+        String result = getString(key);
+        List<String> list = new ArrayList<>();
+        if (TextUtils.isEmpty(result)) return list;
+        String[] split = result.split(SEPARATOR);
+        for (String str : split) {
+            // 恢复原来替换的符号
+            String originStr = str.replaceAll(REPLACEMENT, SEPARATOR);
+            if (!TextUtils.isEmpty(originStr)) {
+                list.add(originStr);
+            }
+        }
+        return list;
     }
 }

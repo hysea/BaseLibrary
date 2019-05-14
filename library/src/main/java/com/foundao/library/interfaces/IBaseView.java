@@ -20,6 +20,9 @@ public interface IBaseView {
      */
     void init(Bundle savedInstanceState);
 
+    /**
+     * 是否注册EventBus
+     */
     boolean isRegisterEventBus();
 
     /**

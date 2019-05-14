@@ -62,6 +62,7 @@ public class DownloadHelper {
         FileDownloader.getImpl()
                 .create(downloadUrl)
                 .setPath(filePath)
+                .setForceReDownload(true)
                 .setListener(new FileDownloadSampleListener() {
                     @Override
                     protected void progress(BaseDownloadTask task, int soFarBytes, int totalBytes) {
@@ -90,5 +91,12 @@ public class DownloadHelper {
                     }
                 })
                 .start();
+    }
+
+    /**
+     * 停止下载
+     */
+    public static void stopDownload() {
+        FileDownloader.getImpl().pauseAll();
     }
 }

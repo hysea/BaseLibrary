@@ -2,6 +2,7 @@ package com.foundao.library.data;
 
 import android.os.Parcelable;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -50,6 +51,11 @@ public interface IDataStorage {
     void putParcelable(String key, Parcelable value);
 
     /**
+     * 保存List<String>对象类型
+     */
+    void putStringList(String key, List<String> value);
+
+    /**
      * 获取int类型
      */
     int getInt(String key);
@@ -88,4 +94,9 @@ public interface IDataStorage {
      * 获取Parcelable对象类型
      */
     <T extends Parcelable> T getParcelable(String key, Class<T> clazz);
+
+    /**
+     * 获取List<String>对象数据
+     */
+    List<String> getStringList(String key);
 }
