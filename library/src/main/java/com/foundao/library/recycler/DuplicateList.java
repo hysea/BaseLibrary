@@ -1,4 +1,4 @@
-package com.foundao.library.view;
+package com.foundao.library.recycler;
 
 import java.util.ArrayList;
 import java.util.Collection;

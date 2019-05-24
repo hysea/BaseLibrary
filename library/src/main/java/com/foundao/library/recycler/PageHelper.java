@@ -1,4 +1,4 @@
-package com.foundao.library.utils;
+package com.foundao.library.recycler;
 
 import java.util.List;
 
@@ -7,15 +7,19 @@ import java.util.List;
  * create by hysea on 2019/4/26
  */
 public class PageHelper<T> {
+
+    /**
+     * 第一页从1开始
+     */
     public static final int FIRST_PAGE = 1;
 
     /**
      * 默认每页显示10条
      */
-    public static final int MAX_PAGE_SIZE = 10;
+    private static final int DEFAULT_MAX_PAGE_SIZE = 10;
 
     private int mCurrentPage = FIRST_PAGE;
-    private int mMaxPageSize = MAX_PAGE_SIZE;
+    private int mMaxPageSize = DEFAULT_MAX_PAGE_SIZE;
 
     private PageListener<T> mPageListener;
 
