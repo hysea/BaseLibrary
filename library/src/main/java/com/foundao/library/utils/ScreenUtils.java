@@ -1,6 +1,8 @@
 package com.foundao.library.utils;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
 
@@ -54,5 +56,20 @@ public class ScreenUtils {
             e.printStackTrace();
         }
         return result;
+    }
+
+    /**
+     * 是否竖屏
+     */
+    public static boolean isPortrait(Activity activity) {
+        return activity.getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
+    }
+
+
+    /**
+     * 是否横屏
+     */
+    public static boolean isLandscape(Activity activity) {
+        return activity.getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
     }
 }

@@ -23,7 +23,6 @@ public abstract class BaseSwipeBackActivity extends BaseActivity implements BGAS
         // 在 super.onCreate(savedInstanceState) 之前调用该方法
         initSwipeBackFinish();
         super.onCreate(savedInstanceState);
-        setStatusBar();
     }
 
     /**
