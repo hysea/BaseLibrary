@@ -1,30 +1,31 @@
 // 设置gradle中的全局变量
 ext {
     android = [
-            compileSdkVersion: 27,
+            compileSdkVersion: 28,
             applicationId    : "com.hysea.baselibrary",
-            minSdkVersion    : 19,
-            targetSdkVersion : 27,
+            minSdkVersion    : 21,
+            targetSdkVersion : 28,
             versionCode      : 1,
-            versionName      : "1.0.0",
+            versionName      : "1.1.0",
     ]
 
     dependVersion = [
-            support: "27.1.0"
+            androidx   : "1.1.0",
+            butterknife: "10.2.1",
+            okhttp     : "3.8.1",
+            retrofit   : "2.3.0",
     ]
 
     dependencies = [
-            "appcompat-v7"          : "com.android.support:appcompat-v7:${dependVersion.support}",
-            "appcompat-v4"          : "com.android.support:appcompat-v4:${dependVersion.support}",
-            "design"                : "com.android.support:design:${dependVersion.support}",
-            "recyclerview"          : "com.android.support:recyclerview-v7:${dependVersion.support}",
-            "cardview"              : "com.android.support:cardview-v7:${dependVersion.support}",
+            "appcompat"             : 'androidx.appcompat:appcompat:${dependVersion.androidx}',
+            "recyclerview"          : "com.android.support:recyclerview-v7:${dependVersion.androidx}",
+            "cardview"              : 'androidx.cardview:cardview:${dependVersion.androidx}',
 
-            "okhttp"                : "com.squareup.okhttp3:okhttp:3.8.1",
-            "okhttp-logger"         : "com.squareup.okhttp3:logging-interceptor:3.8.1",
-            "retrofit2"             : "com.squareup.retrofit2:retrofit:2.3.0",
-            "converter-gson"        : "com.squareup.retrofit2:converter-gson:2.3.0",
-            "adapter-rxjava2"       : "com.squareup.retrofit2:adapter-rxjava2:2.3.0",
+            "okhttp"                : "com.squareup.okhttp3:okhttp:${dependVersion.okhttp}",
+            "okhttp-logger"         : "com.squareup.okhttp3:logging-interceptor:${dependVersion.okhttp}",
+            "retrofit"              : "com.squareup.retrofit2:retrofit:${dependVersion.retrofit}",
+            "converter-gson"        : "com.squareup.retrofit2:converter-gson:${dependVersion.retrofit}",
+            "adapter-rxjava2"       : "com.squareup.retrofit2:adapter-rxjava2:${dependVersion.retrofit}",
 
             "rxjava"                : "io.reactivex.rxjava2:rxjava:2.0.6",
             "rxandroid"             : "io.reactivex.rxjava2:rxandroid:2.0.1",
@@ -35,9 +36,9 @@ ext {
             "dagger"                : "com.google.dagger:dagger:2.7",
             "dagger-compiler"       : "com.google.dagger:dagger-compiler:2.7",
 
-            "bottomdialog"          : "me.shaohui:bottomdialog:1.1.9",
-            "butterknife"           : "com.jakewharton:butterknife:8.8.1",
-            "butterknife-compiler"  : "com.jakewharton:butterknife-compiler:8.8.1",
+            "butterknife"           : "com.jakewharton:butterknife:${dependVersion.butterknife}",
+            "butterknife-compiler"  : "com.jakewharton:butterknife-compiler:${dependVersion.butterknife}",
+
             "BaseAdapterHelper"     : "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.44",
             "SmartRefreshLayout"    : "com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-7",
             "glide"                 : "com.github.bumptech.glide:glide:4.5.0",

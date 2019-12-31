@@ -1,6 +1,6 @@
 package com.foundao.library.http;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.foundao.library.manager.ConfigManager;
 

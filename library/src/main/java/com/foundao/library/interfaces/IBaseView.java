@@ -1,7 +1,7 @@
 package com.foundao.library.interfaces;
 
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
+import androidx.annotation.LayoutRes;
 
 /**
  * Activity与Fragment的公共逻辑

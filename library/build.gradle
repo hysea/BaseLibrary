@@ -9,7 +9,7 @@ android {
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         ndk {
             //设置支持的SO库架构
@@ -32,12 +32,11 @@ android {
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2')
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0')
     testImplementation 'junit:junit:4.12'
-    api rootProject.ext.dependencies["appcompat-v7"]
+    api rootProject.ext.dependencies["appcompat"]
     api rootProject.ext.dependencies["cardview"]
-    api rootProject.ext.dependencies["design"]
-    api rootProject.ext.dependencies["retrofit2"]
+    api rootProject.ext.dependencies["retrofit"]
     api rootProject.ext.dependencies["converter-gson"]
     api rootProject.ext.dependencies["adapter-rxjava2"]
     api rootProject.ext.dependencies["okhttp"]

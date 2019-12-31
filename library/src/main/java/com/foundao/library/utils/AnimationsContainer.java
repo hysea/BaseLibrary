@@ -6,7 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Handler;
-import android.support.annotation.ArrayRes;
+import androidx.annotation.ArrayRes;
 import android.widget.ImageView;
 
 import com.foundao.library.base.BaseApp;

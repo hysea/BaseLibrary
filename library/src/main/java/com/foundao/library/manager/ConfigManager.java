@@ -1,6 +1,6 @@
 package com.foundao.library.manager;
 
-import android.support.annotation.IdRes;
+import androidx.annotation.IdRes;
 
 import java.util.HashMap;
 import java.util.Map;
