@@ -23,7 +23,7 @@ public interface IBaseView {
     /**
      * 是否注册EventBus
      */
-    boolean isRegisterEventBus();
+    boolean isRegisteredEventBus();
 
     /**
      * 初始化相关事件操作

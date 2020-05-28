@@ -49,7 +49,7 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(getLayoutId(), container, false);
         mUnBinder = ButterKnife.bind(this, view);
-        if (isRegisterEventBus()) {
+        if (isRegisteredEventBus()) {
             EventBus.getDefault().register(this);
         }
         return view;
@@ -68,7 +68,7 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
     }
 
     @Override
-    public boolean isRegisterEventBus() {
+    public boolean isRegisteredEventBus() {
         return false;
     }
 
@@ -155,7 +155,7 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
         if (mUnBinder != null) {
             mUnBinder.unbind();
         }
-        if (isRegisterEventBus()) {
+        if (isRegisteredEventBus()) {
             EventBus.getDefault().unregister(this);
         }
         clearDisposable();

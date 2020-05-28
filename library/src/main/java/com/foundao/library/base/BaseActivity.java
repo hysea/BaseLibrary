@@ -3,9 +3,11 @@ package com.foundao.library.base;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.foundao.library.event.EventBusUtils;
 import com.foundao.library.interfaces.IBaseView;
 import com.foundao.library.manager.AppManager;
 import com.foundao.library.view.LoadingView;
@@ -39,8 +41,8 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         super.onCreate(savedInstanceState);
         TAG = this.getClass().getSimpleName();
         setContentView(getLayoutId());
-        if (isRegisterEventBus()) {
-            EventBus.getDefault().register(this);
+        if (isRegisteredEventBus()) {
+            EventBusUtils.register(this);
         }
         mUnBinder = ButterKnife.bind(this);
         mContext = this;
@@ -70,7 +72,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
     }
 
     @Override
-    public boolean isRegisterEventBus() {
+    public boolean isRegisteredEventBus() {
         return false;
     }
 
@@ -142,8 +144,8 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         if (mUnBinder != null) {
             mUnBinder.unbind();
         }
-        if (isRegisterEventBus()) {
-            EventBus.getDefault().unregister(this);
+        if (isRegisteredEventBus()) {
+            EventBusUtils.unregister(this);
         }
         clearDisposable();
         super.onDestroy();

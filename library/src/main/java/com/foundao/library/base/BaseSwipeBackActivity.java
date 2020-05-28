@@ -14,11 +14,9 @@ import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
 public abstract class BaseSwipeBackActivity extends BaseActivity implements BGASwipeBackHelper.Delegate {
 
     protected BGASwipeBackHelper mSwipeBackHelper;
-    protected static String TAG;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        TAG = this.getClass().getSimpleName();
         // 「必须在 Application 的 onCreate 方法中执行 BGASwipeBackHelper.init 来初始化滑动返回」
         // 在 super.onCreate(savedInstanceState) 之前调用该方法
         initSwipeBackFinish();
