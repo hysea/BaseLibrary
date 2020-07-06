@@ -18,7 +18,7 @@ ext {
 
     dependencies = [
             "appcompat"             : 'androidx.appcompat:appcompat:${dependVersion.androidx}',
-            "recyclerview"          : "com.android.support:recyclerview-v7:${dependVersion.androidx}",
+            "recyclerview"          : "androidx.recyclerview:recyclerview:${dependVersion.androidx}",
             "cardview"              : 'androidx.cardview:cardview:${dependVersion.androidx}',
 
             "okhttp"                : "com.squareup.okhttp3:okhttp:${dependVersion.okhttp}",
